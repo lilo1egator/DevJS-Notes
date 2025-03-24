@@ -1,0 +1,165 @@
+# Об'єкти в JavaScript
+
+## Що таке об'єкт?
+Об'єкт – це колекція пар "ключ-значення". Це одна з основних структур даних у JavaScript.
+
+```js
+let user = {
+  name: "Іван",
+  age: 30,
+  isAdmin: true
+};
+```
+Тут `name`, `age` і `isAdmin` – це ключі, а їхні значення – відповідні дані.
+
+## Доступ до властивостей
+
+### Через крапку (`.`):
+```js
+console.log(user.name); // "Іван"
+console.log(user.age);  // 30
+```
+
+### Через квадратні дужки (`[]`):
+```js
+console.log(user["isAdmin"]); // true
+```
+Цей спосіб корисний, якщо ключ зберігається в змінній:
+```js
+let key = "name";
+console.log(user[key]); // "Іван"
+```
+
+## Додавання та видалення властивостей
+```js
+user.city = "Київ"; // Додаємо нову властивість
+console.log(user.city); // "Київ"
+
+delete user.age; // Видаляємо властивість
+console.log(user.age); // undefined
+```
+
+## Перевірка наявності властивості (`in`)
+```js
+console.log("name" in user); // true
+console.log("salary" in user); // false
+```
+
+## Обхід об'єкта (`for...in`)
+```js
+for (let key in user) {
+  console.log(`${key}: ${user[key]}`);
+}
+```
+
+## Вбудовані методи роботи з об'єктами
+### `Object.keys(obj)`, `Object.values(obj)`, `Object.entries(obj)`
+```js
+let user = {
+  name: "Іван",
+  age: 30
+};
+
+console.log(Object.keys(user)); // ["name", "age"]
+console.log(Object.values(user)); // ["Іван", 30]
+console.log(Object.entries(user)); // [["name", "Іван"], ["age", 30]]
+```
+
+## Метод `this`
+Ключове слово `this` вказує на сам об'єкт:
+```js
+let user = {
+  name: "Іван",
+  sayHi() {
+    console.log(`Привіт, мене звати ${this.name}`);
+  }
+};
+
+user.sayHi(); // "Привіт, мене звати Іван"
+```
+
+## Створення об'єктів через `Object.create`
+```js
+let animal = {
+  eats: true
+};
+
+let rabbit = Object.create(animal);
+console.log(rabbit.eats); // true
+```
+
+## Копіювання об'єктів
+### `Object.assign()`
+```js
+let user = { name: "Іван" };
+let clone = Object.assign({}, user);
+console.log(clone); // { name: "Іван" }
+```
+
+## Глибоке копіювання
+```js
+let user = {
+  name: "Іван",
+  sizes: {
+    height: 180,
+    weight: 70
+  }
+};
+
+let clone = JSON.parse(JSON.stringify(user));
+console.log(clone);
+```
+
+## Конструктори
+Функція-конструктор створює об'єкти через `new`:
+```js
+function User(name) {
+  this.name = name;
+  this.isAdmin = false;
+}
+
+let user = new User("Іван");
+console.log(user.name); // "Іван"
+console.log(user.isAdmin); // false
+```
+
+## Класи
+Класи – це синтаксичний цукор над конструкторами:
+```js
+class User {
+  constructor(name) {
+    this.name = name;
+  }
+  sayHi() {
+    console.log(`Привіт, ${this.name}`);
+  }
+}
+
+let user = new User("Іван");
+user.sayHi(); // "Привіт, Іван"
+```
+
+## Методи об'єктів
+Об'єкти мають свої методи для роботи з їхніми властивостями.
+
+### Копіювання та об'єднання
+- `Object.assign(target, ...sources)` – копіює властивості
+- `structuredClone(obj)` – глибоке копіювання (новий спосіб)
+
+```js
+let user = { name: "Іван" };
+let clone = Object.assign({}, user);
+clone.age = 25;
+console.log(user); // { name: "Іван" }
+console.log(clone); // { name: "Іван", age: 25 }
+```
+
+### Перевірка властивостей
+- `obj.hasOwnProperty(key)` – перевіряє, чи є ключ в об'єкті
+- `key in obj` – аналогічна перевірка
+
+```js
+let user = { name: "Іван" };
+console.log("name" in user); // true
+console.log(user.hasOwnProperty("age")); // false
+```

@@ -1,0 +1,178 @@
+# Масиви в JavaScript
+
+## Що таке масив?
+Масив – це спеціальний об'єкт для зберігання впорядкованої колекції даних.
+
+```js
+let fruits = ["Яблуко", "Банан", "Вишня"];
+console.log(fruits[0]); // "Яблуко"
+```
+
+## Основні методи масивів
+
+### Додавання/видалення елементів
+- `push(value)` – додає елемент в кінець
+- `pop()` – видаляє останній елемент
+- `unshift(value)` – додає елемент на початок
+- `shift()` – видаляє перший елемент
+
+```js
+let arr = ["a", "b", "c"];
+arr.push("d"); // ["a", "b", "c", "d"]
+arr.pop(); // ["a", "b", "c"]
+arr.unshift("z"); // ["z", "a", "b", "c"]
+arr.shift(); // ["a", "b", "c"]
+```
+
+### Перетворення масивів у рядки
+- `join(separator)` – об'єднує елементи в рядок
+- `toString()` – перетворює масив у рядок через кому
+
+```js
+let arr = ["яблуко", "банан", "вишня"];
+console.log(arr.join(" - ")); // "яблуко - банан - вишня"
+console.log(arr.toString()); // "яблуко,банан,вишня"
+```
+
+### Перетворення рядків у масиви
+- `split(separator)` – розбиває рядок у масив
+
+```js
+let str = "яблуко, банан, вишня";
+let arr = str.split(", ");
+console.log(arr); // ["яблуко", "банан", "вишня"]
+```
+
+### Перебір масивів
+- `forEach(callback)` – виконує функцію для кожного елемента
+- `map(callback)` – створює новий масив, перетворюючи кожен елемент
+- `filter(callback)` – створює масив з елементів, що пройшли перевірку
+- `reduce(callback, initialValue)` – обчислює одне значення з масиву
+
+```js
+let numbers = [1, 2, 3, 4, 5];
+numbers.forEach(num => console.log(num));
+let doubled = numbers.map(num => num * 2);
+let evens = numbers.filter(num => num % 2 === 0);
+let sum = numbers.reduce((acc, num) => acc + num, 0);
+```
+
+### Пошук в масиві
+- `indexOf(value)` – шукає елемент (повертає індекс або `-1`)
+- `includes(value)` – перевіряє наявність елемента (повертає `true/false`)
+- `find(callback)` – повертає перший елемент, що задовольняє умову
+- `findIndex(callback)` – повертає індекс першого елемента за умовою
+
+```js
+let arr = ["яблуко", "банан", "вишня"];
+console.log(arr.indexOf("банан")); // 1
+console.log(arr.includes("груша")); // false
+console.log(arr.find(fruit => fruit.startsWith("в"))); // "вишня"
+```
+
+### Зміна масиву
+- `slice(start, end)` – копіює частину масиву
+- `splice(start, deleteCount, ...items)` – видаляє/додає елементи
+- `concat(array)` – об'єднує масиви
+- `reverse()` – змінює порядок елементів
+- `sort(compareFunction)` – сортує масив
+
+```js
+let arr = ["a", "b", "c", "d"];
+console.log(arr.slice(1, 3)); // ["b", "c"]
+arr.splice(1, 2, "x", "y"); // ["a", "x", "y", "d"]
+console.log(arr.concat(["e", "f"])); // ["a", "x", "y", "d", "e", "f"]
+```
+
+### Об'єднання та розділення
+- `concat(arr2)` – об'єднує масиви
+- `join(separator)` – створює рядок
+- `split(separator)` – розбиває рядок у масив
+
+```js
+let arr1 = [1, 2];
+let arr2 = [3, 4];
+let newArr = arr1.concat(arr2); // [1, 2, 3, 4]
+let str = newArr.join(" - "); // "1 - 2 - 3 - 4"
+```
+
+### Сортування та зміна
+- `sort(fn)` – сортує масив
+- `reverse()` – змінює порядок
+- `splice(start, deleteCount, ...items)` – змінює вміст масиву
+- `slice(start, end)` – створює копію частини масиву
+
+```js
+let numbers = [5, 2, 8, 1];
+numbers.sort((a, b) => a - b); // [1, 2, 5, 8]
+numbers.reverse(); // [8, 5, 2, 1]
+let cut = numbers.slice(1, 3); // [5, 2]
+```
+
+
+### Глибоке копіювання масиву
+Копіювання масиву через `=` створює посилання, а не новий масив. Для глибокого копіювання:
+
+```js
+let arr = [1, 2, 3];
+let copy1 = arr.slice();
+let copy2 = [...arr];
+let copy3 = JSON.parse(JSON.stringify(arr));
+```
+
+## Робота з багатовимірними масивами
+
+```js
+let matrix = [
+  [1, 2, 3],
+  [4, 5, 6],
+  [7, 8, 9]
+];
+console.log(matrix[1][1]); // 5
+```
+
+## Особливості масивів
+- Масиви – це об'єкти, їх ключі – це числові індекси.
+- Довжина масиву (`length`) змінюється динамічно.
+
+```js
+let arr = [];
+arr[100] = "Привіт";
+console.log(arr.length); // 101 (хоча масив містить один елемент)
+```
+
+## Деструктуризація масиву
+```js
+let [first, second] = ["яблуко", "банан", "вишня"];
+console.log(first); // "яблуко"
+```
+
+ Псевдомасиви та методи масивів і об'єктів
+
+## Псевдомасиви
+**Псевдомасиви** (array-like objects) – це об'єкти, що мають деякі характеристики масивів (довжина, доступ за індексом), але не володіють усіма методами масиву.
+
+### Відмінності псевдомасиву від масиву
+1. **Псевдомасив не має методів масиву** (`map`, `filter`, `forEach` тощо).
+2. **Його не можна ітерувати за допомогою `for...of`** (без перетворення).
+3. **Його можна перебирати звичайним `for` за індексами**.
+
+### Приклад псевдомасиву
+```js
+function example() {
+  console.log(arguments); // Псевдомасив
+  console.log(arguments.length); // Довжина псевдомасиву
+  console.log(arguments[0]); // Доступ за індексом
+}
+example(1, 2, 3);
+```
+
+### Перетворення псевдомасиву в масив
+```js
+function example() {
+  let args = Array.from(arguments); // Варіант 1
+  let args2 = [...arguments]; // Варіант 2
+  console.log(args.map(el => el * 2));
+}
+example(1, 2, 3);
+```

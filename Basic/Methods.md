@@ -1,0 +1,120 @@
+# Методи для всіх типів даних у JavaScript
+
+## 1. Методи для рядків (String)
+```js
+let str = "Hello, World!";
+
+// Довжина рядка
+console.log(str.length); // 13
+
+// Перетворення в верхній/нижній регістр
+console.log(str.toUpperCase()); // "HELLO, WORLD!"
+console.log(str.toLowerCase()); // "hello, world!"
+
+// Пошук символу або підрядка
+console.log(str.indexOf("World")); // 7
+console.log(str.includes("Hello")); // true
+
+// Вирізання частини рядка
+console.log(str.slice(0, 5)); // "Hello"
+console.log(str.substring(7, 12)); // "World"
+console.log(str.substr(7, 5)); // "World"
+
+// Замінити частину рядка
+console.log(str.replace("World", "JavaScript")); // "Hello, JavaScript!"
+
+// Розбити рядок у масив
+console.log(str.split(", ")); // ["Hello", "World!"]
+
+// Видаляє пробіли з початку і кінця рядка, але не змінює його всередині.
+str.trim()
+str.trimStart()
+str.trimEnd()
+```
+
+## 2. Методи для чисел (Number)
+```js
+let num = 123.456;
+
+// Округлення
+console.log(Math.round(num)); // 123
+console.log(Math.floor(num)); // 123
+console.log(Math.ceil(num)); // 124
+console.log(Math.trunc(num)); // 123
+
+// Форматування числа
+console.log(num.toFixed(2)); // "123.46"
+console.log(num.toExponential(2)); // "1.23e+2"
+console.log(num.toString()); // "123.456"
+
+// Парсинг рядків у числа
+console.log(parseInt("42")); // 42
+console.log(parseFloat("3.14")); // 3.14
+```
+
+## 3. Методи для масивів (Array)
+```js
+let arr = [1, 2, 3, 4, 5];
+
+// Додавання/видалення елементів
+arr.push(6); // [1, 2, 3, 4, 5, 6]
+arr.pop(); // [1, 2, 3, 4, 5]
+arr.unshift(0); // [0, 1, 2, 3, 4, 5]
+arr.shift(); // [1, 2, 3, 4, 5]
+
+// Перетворення масиву
+console.log(arr.join(" - ")); // "1 - 2 - 3 - 4 - 5"
+
+// Пошук в масиві
+console.log(arr.includes(3)); // true
+console.log(arr.indexOf(4)); // 3
+console.log(arr.find(x => x > 3)); // 4
+console.log(arr.filter(x => x % 2 === 0)); // [2, 4]
+
+// Перетворення масиву
+console.log(arr.map(x => x * 2)); // [2, 4, 6, 8, 10]
+console.log(arr.reduce((sum, x) => sum + x, 0)); // 15
+
+// Робота з частинами масиву
+console.log(arr.slice(1, 3)); // [2, 3]
+arr.splice(2, 1, 99); // [1, 2, 99, 4, 5]
+```
+
+## 4. Методи для об'єктів (Object)
+```js
+let obj = { name: "Іван", age: 25 };
+
+// Отримання ключів, значень та пар ключ-значення
+console.log(Object.keys(obj)); // ["name", "age"]
+console.log(Object.values(obj)); // ["Іван", 25]
+console.log(Object.entries(obj)); // [["name", "Іван"], ["age", 25]]
+
+// Копіювання об'єкта
+let objCopy = Object.assign({}, obj);
+let objSpread = { ...obj };
+
+// Перевірка властивостей
+console.log("name" in obj); // true
+console.log(obj.hasOwnProperty("age")); // true
+```
+
+## 5. Методи для функцій (Function)
+```js
+function greet(name) {
+  console.log(`Привіт, ${name}!`);
+}
+
+// Прив'язка контексту
+let greetUser = greet.bind(null, "Олег");
+greetUser(); // "Привіт, Олег!"
+
+// Виклик функції з певним контекстом
+function showInfo() {
+  console.log(this.name);
+}
+let user = { name: "Марія" };
+showInfo.call(user); // "Марія"
+showInfo.apply(user); // "Марія"
+```
+
+Цей список охоплює основні методи для всіх типів даних у JavaScript. 
