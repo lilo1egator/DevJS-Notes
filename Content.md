@@ -1,0 +1,15 @@
+# 📖 Зміст
+
+1. [Основи JavaScript](Basic/01_Basic.md)
+2. [Змінні](Basic/02_Variables.md)
+3. [Типи даних та оператори](Basic/03_Data%20types%20and%20operators.md)
+4. [Масиви](Basic/04_Arrays.md)
+5. [Об'єкти](Basic/05_Objects.md)
+6. [Методи роботи з масивами](Basic/06_Methods.md)
+7. [Функції](Basic/07_Function.md)
+8. [Об'єктно-орієнтоване програмування](Basic/08_OOP.md)
+9. [Умови та цикли](Basic/09_Conditions%20and%20cycles.md)
+10. [Маніпуляції з DOM](Basic/10_DOM%20Manipulation.md)
+11. [Події](Basic/11_Events.md)
+12. [Події для мобільних пристроїв](Basic/12_Events%20for%20phone.md)
+13. [Async vs Defer](Basic/13_Async%20Vs%20Defer.md)
