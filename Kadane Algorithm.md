@@ -16,18 +16,14 @@
 ## Реалізація в JavaScript
 ```js
 function maxSubArray(arr) {
-    let maxSum = arr[0];
+    let maxSum = 0;
     let currentSum = 0;
     
-    for (let num of arr) {
-        currentSum += num;
-        if (currentSum > maxSum) {
-            maxSum = currentSum;
-        }
-        if (currentSum < 0) {
-            currentSum = 0;
-        }
-    }
+    for (let i = 0; i < arr.length; i++) {
+       sum += arr[i];
+       if (sum > maxSum) maxSum = sum;
+       if (sum <= 0) sum = 0;
+     }
     
     return maxSum;
 }
